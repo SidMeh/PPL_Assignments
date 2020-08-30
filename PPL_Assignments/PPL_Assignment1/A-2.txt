@@ -1,0 +1,14 @@
+Questions and Answers
+---------
+
+        1   How have if-blocks  been translated into GIMPLE  statements? Can you
+            differentiate between conditional and unconditional gotos?
+            
+        Answer1. The if-blocks are translated into gimple statements using gotos. If the condition mentioned is true then the program control goes to a mentioned goto. If it is false and there is an else statement, then the program control goes to another mentioned goto. Unconditional jump instruction transfers the program sequence to the described memory address. Conditional jump instructions transfer the program sequence to the desrribed memory address only if the condition is mentioned.
+
+        2   Repeat  the  above compilation,  but  now  asking for  another  dump
+            that  of  the pass  "cfg".  View  this  pass  and say  whether  this
+            representation makes it easier to  read and understand GIMPLEs. Draw
+            the control-flow graph  of the program A-2.c on a  piece of paper by
+            looking at the CFG dump.
+	Answer2. Yes. Control flow graph makes it easier to read the statement and understand the GIMPLEs.

@@ -1,0 +1,322 @@
+Question A-1
+
+A-1.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+main():
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	c7 45 ec 06 00 00 00 	movl   $0x6,-0x14(%rbp)
+   f:	c7 45 f0 0a 00 00 00 	movl   $0xa,-0x10(%rbp)
+  16:	c7 45 f4 14 00 00 00 	movl   $0x14,-0xc(%rbp)
+  1d:	8b 45 f0             	mov    -0x10(%rbp),%eax
+  20:	0f af 45 f4          	imul   -0xc(%rbp),%eax
+  24:	83 c0 19             	add    $0x19,%eax
+  27:	89 45 f8             	mov    %eax,-0x8(%rbp)
+  2a:	c7 45 ec 06 00 00 00 	movl   $0x6,-0x14(%rbp)
+  31:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 37 <main+0x37>
+			33: R_X86_64_PC32	Z-0x4
+  37:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  3a:	90                   	nop
+  3b:	5d                   	pop    %rbp
+  3c:	c3                   	retq   
+
+
+
+
+
+
+
+Question A-2
+
+A-2.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <f>:
+f():
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # e <f+0xe>
+			a: R_X86_64_PC32	Z-0x4
+   e:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  11:	83 7d fc 09          	cmpl   $0x9,-0x4(%rbp)
+  15:	7f 10                	jg     27 <f+0x27>
+  17:	c7 45 f4 05 00 00 00 	movl   $0x5,-0xc(%rbp)
+  1e:	c7 45 f8 11 00 00 00 	movl   $0x11,-0x8(%rbp)
+  25:	eb 1b                	jmp    42 <f+0x42>
+  27:	c7 45 f4 06 00 00 00 	movl   $0x6,-0xc(%rbp)
+  2e:	c7 45 f8 14 00 00 00 	movl   $0x14,-0x8(%rbp)
+  35:	83 7d fc 00          	cmpl   $0x0,-0x4(%rbp)
+  39:	75 07                	jne    42 <f+0x42>
+  3b:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%rbp)
+  42:	8b 55 f4             	mov    -0xc(%rbp),%edx
+  45:	89 d0                	mov    %edx,%eax
+  47:	c1 e0 02             	shl    $0x2,%eax
+  4a:	01 d0                	add    %edx,%eax
+  4c:	01 c0                	add    %eax,%eax
+  4e:	89 c2                	mov    %eax,%edx
+  50:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  53:	01 d0                	add    %edx,%eax
+  55:	89 05 00 00 00 00    	mov    %eax,0x0(%rip)        # 5b <f+0x5b>
+			57: R_X86_64_PC32	Z-0x4
+  5b:	90                   	nop
+  5c:	5d                   	pop    %rbp
+  5d:	c3                   	retq   
+
+
+
+
+Question A-3
+
+A-3.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+main():
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%rbp)
+   f:	eb 03                	jmp    14 <main+0x14>
+  11:	d1 65 f4             	shll   -0xc(%rbp)
+  14:	83 7d f4 63          	cmpl   $0x63,-0xc(%rbp)
+  18:	7e f7                	jle    11 <main+0x11>
+  1a:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%rbp)
+  21:	eb 21                	jmp    44 <main+0x44>
+  23:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+  2a:	eb 0e                	jmp    3a <main+0x3a>
+  2c:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  2f:	0f af 45 fc          	imul   -0x4(%rbp),%eax
+  33:	01 45 f4             	add    %eax,-0xc(%rbp)
+  36:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+  3a:	83 7d fc 31          	cmpl   $0x31,-0x4(%rbp)
+  3e:	7e ec                	jle    2c <main+0x2c>
+  40:	83 45 f8 01          	addl   $0x1,-0x8(%rbp)
+  44:	83 7d f8 18          	cmpl   $0x18,-0x8(%rbp)
+  48:	7e d9                	jle    23 <main+0x23>
+  4a:	b8 00 00 00 00       	mov    $0x0,%eax
+  4f:	5d                   	pop    %rbp
+  50:	c3                   	retq   
+
+
+
+Question A-4
+
+A-4.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+main():
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 30          	sub    $0x30,%rsp
+   c:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  13:	00 00 
+  15:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  19:	31 c0                	xor    %eax,%eax
+  1b:	c7 45 ec 01 00 00 00 	movl   $0x1,-0x14(%rbp)
+  22:	c7 45 f0 02 00 00 00 	movl   $0x2,-0x10(%rbp)
+  29:	c7 45 f4 03 00 00 00 	movl   $0x3,-0xc(%rbp)
+  30:	c7 45 d4 00 00 00 00 	movl   $0x0,-0x2c(%rbp)
+  37:	eb 16                	jmp    4f <main+0x4f>
+  39:	8b 45 d4             	mov    -0x2c(%rbp),%eax
+  3c:	48 98                	cltq   
+  3e:	8b 54 85 ec          	mov    -0x14(%rbp,%rax,4),%edx
+  42:	8b 45 d4             	mov    -0x2c(%rbp),%eax
+  45:	48 98                	cltq   
+  47:	89 54 85 e0          	mov    %edx,-0x20(%rbp,%rax,4)
+  4b:	83 45 d4 01          	addl   $0x1,-0x2c(%rbp)
+  4f:	83 7d d4 02          	cmpl   $0x2,-0x2c(%rbp)
+  53:	7e e4                	jle    39 <main+0x39>
+  55:	48 8d 45 e0          	lea    -0x20(%rbp),%rax
+  59:	48 89 45 d8          	mov    %rax,-0x28(%rbp)
+  5d:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  61:	48 83 c0 08          	add    $0x8,%rax
+  65:	c7 00 05 00 00 00    	movl   $0x5,(%rax)
+  6b:	b8 00 00 00 00       	mov    $0x0,%eax
+  70:	48 8b 4d f8          	mov    -0x8(%rbp),%rcx
+  74:	64 48 33 0c 25 28 00 	xor    %fs:0x28,%rcx
+  7b:	00 00 
+  7d:	74 05                	je     84 <main+0x84>
+  7f:	e8 00 00 00 00       	callq  84 <main+0x84>
+			80: R_X86_64_PLT32	__stack_chk_fail-0x4
+  84:	c9                   	leaveq 
+  85:	c3                   	retq   
+
+
+
+
+Question A-5
+
+A-5.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+main():
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	c7 45 f8 0a 00 00 00 	movl   $0xa,-0x8(%rbp)
+   f:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  12:	3b 45 f8             	cmp    -0x8(%rbp),%eax
+  15:	7e 10                	jle    27 <main+0x27>
+  17:	c7 45 f0 03 00 00 00 	movl   $0x3,-0x10(%rbp)
+  1e:	c7 45 f4 02 00 00 00 	movl   $0x2,-0xc(%rbp)
+  25:	eb 0e                	jmp    35 <main+0x35>
+  27:	c7 45 f0 02 00 00 00 	movl   $0x2,-0x10(%rbp)
+  2e:	c7 45 f4 03 00 00 00 	movl   $0x3,-0xc(%rbp)
+  35:	8b 55 f0             	mov    -0x10(%rbp),%edx
+  38:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  3b:	01 d0                	add    %edx,%eax
+  3d:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  40:	b8 00 00 00 00       	mov    $0x0,%eax
+  45:	5d                   	pop    %rbp
+  46:	c3                   	retq   
+
+
+
+
+
+Question B-1
+
+B-1.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <AddTwo>:
+AddTwo():
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	89 7d fc             	mov    %edi,-0x4(%rbp)
+   b:	83 45 fc 02          	addl   $0x2,-0x4(%rbp)
+   f:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  12:	5d                   	pop    %rbp
+  13:	c3                   	retq   
+
+0000000000000014 <main>:
+main():
+  14:	f3 0f 1e fa          	endbr64 
+  18:	55                   	push   %rbp
+  19:	48 89 e5             	mov    %rsp,%rbp
+  1c:	48 83 ec 10          	sub    $0x10,%rsp
+  20:	c7 45 fc 03 00 00 00 	movl   $0x3,-0x4(%rbp)
+  27:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  2a:	89 c7                	mov    %eax,%edi
+  2c:	e8 00 00 00 00       	callq  31 <main+0x1d>
+			2d: R_X86_64_PLT32	AddTwo-0x4
+  31:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  34:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  37:	c9                   	leaveq 
+  38:	c3                   	retq   
+
+
+
+Question B-2
+
+B-2.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+main():
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	c7 45 fc 0a 00 00 00 	movl   $0xa,-0x4(%rbp)
+   f:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%rbp)
+  16:	eb 0d                	jmp    25 <main+0x25>
+  18:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 1e <main+0x1e>
+			1a: R_X86_64_PC32	N-0x4
+  1e:	01 45 fc             	add    %eax,-0x4(%rbp)
+  21:	83 45 f8 01          	addl   $0x1,-0x8(%rbp)
+  25:	83 7d f8 03          	cmpl   $0x3,-0x8(%rbp)
+  29:	7e ed                	jle    18 <main+0x18>
+  2b:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  2e:	5d                   	pop    %rbp
+  2f:	c3                   	retq   
+  
+  
+  
+  
+Question B-3
+
+B-3.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+main():
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	c7 45 f8 04 00 00 00 	movl   $0x4,-0x8(%rbp)
+  13:	eb 13                	jmp    28 <main+0x28>
+  15:	83 7d f8 03          	cmpl   $0x3,-0x8(%rbp)
+  19:	7f 06                	jg     21 <main+0x21>
+  1b:	83 45 fc 02          	addl   $0x2,-0x4(%rbp)
+  1f:	eb 03                	jmp    24 <main+0x24>
+  21:	d1 65 fc             	shll   -0x4(%rbp)
+  24:	83 45 f8 01          	addl   $0x1,-0x8(%rbp)
+  28:	83 7d f8 63          	cmpl   $0x63,-0x8(%rbp)
+  2c:	7e e7                	jle    15 <main+0x15>
+  2e:	8b 55 fc             	mov    -0x4(%rbp),%edx
+  31:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  34:	89 c6                	mov    %eax,%esi
+  36:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 3d <main+0x3d>
+			39: R_X86_64_PC32	.rodata-0x4
+  3d:	b8 00 00 00 00       	mov    $0x0,%eax
+  42:	e8 00 00 00 00       	callq  47 <main+0x47>
+			43: R_X86_64_PLT32	printf-0x4
+  47:	b8 00 00 00 00       	mov    $0x0,%eax
+  4c:	c9                   	leaveq 
+  4d:	c3                   	retq   
+
+
+
+
+Question B-4
+
+B-4.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+main():
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	8b 55 f4             	mov    -0xc(%rbp),%edx
+   b:	8b 45 f8             	mov    -0x8(%rbp),%eax
+   e:	01 c2                	add    %eax,%edx
+  10:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  13:	8d 0c 02             	lea    (%rdx,%rax,1),%ecx
+  16:	8b 55 f8             	mov    -0x8(%rbp),%edx
+  19:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  1c:	01 d0                	add    %edx,%eax
+  1e:	0f af c1             	imul   %ecx,%eax
+  21:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  24:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  27:	5d                   	pop    %rbp
+  28:	c3                   	retq   
+
+

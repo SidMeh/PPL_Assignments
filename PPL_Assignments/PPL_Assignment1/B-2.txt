@@ -1,0 +1,6 @@
+Questions
+---------
+
+        1   What will happen if "a = a + N" is replaced by "a = a + 1"?
+
+	Answer1. Initially in <bb3> twmporary variable of N had been declared and then this temporary variable of "N" was added with temporary variable of a. If "a = a + N" is replaced by "a = a + 1" then temporary variable of "N" is not required.

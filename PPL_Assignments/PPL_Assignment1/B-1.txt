@@ -1,0 +1,14 @@
+Questions
+---------
+
+        1   The body  of AddTwo(x)  seems to  be inlined into  the call  of main
+            rendering the function useless (nobody else is calling it). Then why
+            is the definition of AddTwo(x) still there all the way till the last
+            pass (B-1.c.*.optimized)?
+            
+       Answer1. The definition of the function is still present till the last call as we need the function statements as it is called. There is a label in the function for executing instructions i.e. <bb2>. Only labels in the main function can be accessed by the main function and not the labels outside it so label in the AddTwo(x) seems to be inlinrd into the call of main rendering the function. The further execution if the main funcion depends on the return value of this AddTwo(x) function. So the remaining part of the main function is included in this block till end. 
+
+        2   Is there any way to get rid of it?
+       
+       Answer2. The only way to add the static keyword to the prototype to signify that its linkage is internal only.
+   
