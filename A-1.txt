@@ -1,0 +1,30 @@
+Questions and Answers
+---------
+
+        1   How  do the  declarations  look in  the  GIMPLE? Specifically,  what
+            happens to multiple  variables declared and initialized  on the same
+            line? What happens to global declaration [int Z]?
+            
+        Answer1. In GIMPLE declarations are of the same data types as declared in source file. When multiple variables are       declared and initialized on same line, in GIMPLE these variables are declared individually with their data types on different lines. The declaration happens one after the another. Each variable in GIMPLE is declared on different line. Global variable declarations are not considered. Global variable declarations are ommited in GIMPLE. The global variable is strored in BSS.     
+            
+            
+            2   How are complex  expressions such as [c  = a * b +  25] broken down?
+            Can you  determine a  rule as  to when  temporary variables  will be
+            introduced?
+            
+        Answer2. Complex expressions such as [c = a*b +25] are broken down before storing in any variable. It is stored as _1 = a*b and then c = _1 + 25. Only one operation takes place at a time. They are solved and broken down with temporary variables. The rule for declaring temporary variables is as : first variable is stored as _1, second is stored as _2 and so on. 
+            
+            
+
+        3   How are  floats/doubles represented in  GIMPLE? What happens  when a
+            float/double is assigned to an integer in [Z = r]?
+
+        Answer2. Double and floats are created like 34.5 as 3.45e+1. When double and floats are assigned to an integer in GIMPLE, for example Z, it is stored like Z.0_x and then stored. Here x is any integer indicating the temporary variable.  
+First it is assigned in this the temporary variable Z.0_x in this manner and then assigned to the required variable Z.
+
+
+        4   How  are reads/writes  to the  global variable  Z performed?  Why is
+            there a temporary introduced  for the statement [Z = Z  + 1] but not
+            for the statements [q = Z] or [Z = p]?
+
+       Answer3. The global variable z is assigned its value not directly but by creating a temporary variable. This temporary variable is assigned the value. The the value is assigned to z through this temporary variable.A temporary variable is necessary for the statment Z = Z + 1. Since the first operation Z + 1 is performed and then stored in a temporary variable. Then the value of Z+1 is assigned to Z through this temporary variable.

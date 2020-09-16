@@ -1,0 +1,16 @@
+Questions and Answers
+---------
+
+        1   How is array declaration and initialization handled?
+        
+        Answer1. Array declaration ie handled by mentioning the size of array and its data type. Array initialization is carried out by assigning value to each member of array individually and sequentually on each different line.
+        
+
+        2   Why does the statement a[i] = b[i] get broken down to two steps with
+            an intermediate temporary?
+            
+        Answer2. Statement a[i] = b[i] gets broken down into two steps with an intermediate temporary as array element is referenced using pointer in particular program. It involves mmemory operations. Only one memory operation is allowed as in assembly language.
+
+        3   Why are there CLOBBER statements at the end?
+
+        Answer3. Clobber statements are used so arrays have no longer values because it has gone out of scope.
